@@ -1,5 +1,5 @@
 .contactListTable {
-  width: 33%;
+  width: 50%;
   margin-top: 10px;
   text-align: center;
   margin-left: auto;
@@ -7,7 +7,6 @@
 }
 
 .thead {
-  font-size: 40px;
   height: 55px;
 }
 
