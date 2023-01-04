@@ -4,6 +4,8 @@ import Filter from './Filter/Filter';
 import ContactTable from './ContactTable/ContactTable';
 import { nanoid } from 'nanoid';
 
+const LOCAL_KEY = 'contacts';
+
 class App extends Component {
   state = {
     contacts: [
@@ -13,6 +15,20 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+  };
+
+  componentDidMount = () => {
+    const localContacts = localStorage.getItem(LOCAL_KEY);
+    const parsedContacts = JSON.parse(localContacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  };
+
+  componentDidUpdate = (_, prevState) => {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(this.state.contacts));
+    }
   };
 
   handleDeleteContact = idToDelete => {
