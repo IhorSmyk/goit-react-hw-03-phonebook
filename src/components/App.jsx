@@ -30,17 +30,15 @@ class App extends Component {
     }
   };
 
-  handleDeleteContact = idToDelete => {
+  handleDeleteContact = idToDelete =>
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== idToDelete),
     }));
-  };
 
-  handleChangeFilter = e => {
+  handleChangeFilter = e =>
     this.setState({
       filter: e.target.value.toLowerCase(),
     });
-  };
 
   getFilteredContacts = () =>
     this.state.contacts.filter(({ name }) =>
